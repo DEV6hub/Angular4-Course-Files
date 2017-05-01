@@ -1,0 +1,34 @@
+<h1 [innerHTML]="title"></h1>
+
+<ul>
+  <li *ngFor="let item of listOfThings">{{item}}</li>
+</ul>
+
+<h3>Hide and Seek</h3>
+<p [style.visibility]="isFound ? 'hidden' : 'visible'">Hiding...</p>
+<p *ngIf="isFound">Found you!</p>
+<button (click)="toggleFound()">Commence the search</button>
+
+<hr>
+
+<div>
+  <label for="name">Say my name!</label>
+  <input id="name" type="text" [(ngModel)]="name">
+</div>
+
+<h3>{{name}}</h3>
+
+<hr>
+
+<label for="greetingTarget">Show greeting for:</label>
+<select id="greetingTarget" [(ngModel)]="greetingTarget">
+  <option *ngFor="let target of greetingTargets" [value]="target">{{target}}</option>
+</select>
+
+<h5 [ngSwitch]="greetingTarget">
+  <span *ngSwitchCase="'Man'">Hello John</span>
+  <span *ngSwitchCase="'Woman'">Hello Jane</span>
+  <span *ngSwitchCase="'Dog'">Hello Sparky</span>
+  <span *ngSwitchCase="'Cat'">Hello Fluffy</span>
+  <span *ngSwitchDefault>Hello Everybody!</span>
+</h5>

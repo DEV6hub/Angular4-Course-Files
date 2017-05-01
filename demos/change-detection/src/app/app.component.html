@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+
+<div>
+  <label for="firstName">Dynamic Person First Name</label>
+  <input type="text" [(ngModel)]="person.firstName">
+</div>
+
+<h4>New Person</h4>
+
+<div>
+  <label for="newFirstName">New First Name</label>
+  <input type="text" [(ngModel)]="newFirstName">
+</div>
+<div>
+  <label for="newLastName">New Last Name</label>
+  <input type="text" [(ngModel)]="newLastName">
+</div>
+<div>
+  <button (click)="setNewPerson()">Create New Person</button>
+</div>
+
+<hr>
+
+<h3>Person Details</h3>
+<person-details [person]="person"></person-details>
+
+<hr>
+
+<h3>OnPush Person Details</h3>
+<person-details-immutable [person]="person"></person-details-immutable>

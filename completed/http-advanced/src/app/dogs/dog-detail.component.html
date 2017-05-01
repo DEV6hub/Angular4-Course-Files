@@ -1,0 +1,12 @@
+<div *ngIf="dog">
+    <p>Name: {{dog.name}}</p>
+    <p>Breed: {{dog.breed}}</p>
+    <p>Description: {{dog.description}}</p>
+    <p>Birth Date: {{dog.birthday | date}}</p>
+    <p>Age in Dog Years: {{dog.birthday | dogYears}}</p>
+</div>
+
+<button type="button" (click)="setAsFavourite()">Set as Favourite</button>
+<button type="button" (click)="goBack()">Go Back</button>
+<button type="button" (click)="editDog()">Edit Dog</button>
+<button type="button" (click)="deleteDog()">Delete Dog</button>

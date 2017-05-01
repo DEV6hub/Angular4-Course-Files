@@ -1,0 +1,20 @@
+<h1>{{title}}</h1>
+
+<inside-outside>
+  <p>OUTSIDE! {{internalHello}}</p>
+</inside-outside>
+
+<h3>Number of high fives recieved: {{highFiveCount}}</h3>
+<p>{{recentHighFive}}</p>
+
+<person-details [person]="john" (highFive)="recieveHighFive($event)"></person-details>
+
+<hr>
+
+<person-details [person]="jane" (highFive)="recieveHighFive($event)"></person-details>
+
+<hr>
+
+<div>
+  <button (click)="remoteHighFive()">Force a High Five from John</button>
+</div>

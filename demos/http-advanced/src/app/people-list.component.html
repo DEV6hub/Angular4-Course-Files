@@ -1,0 +1,5 @@
+<h3>List of people</h3>
+<ul>
+    <li *ngFor="let person of people | async" (click)="putUser(person)">{{person.firstName}} {{person.lastName}}</li>
+    <li (click)="putUser(invalidUser)">{{invalidUser?.firstName}} {{invalidUser?.lastName}}</li>
+</ul>

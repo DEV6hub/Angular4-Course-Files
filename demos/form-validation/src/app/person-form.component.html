@@ -1,0 +1,28 @@
+<form (ngSubmit)="submitForm()" #personForm="ngForm" *ngIf="active" novalidate>
+  <div class="form-group" [class.has-error]="isInvalid(firstNameInput, personForm)">
+    <label for="firstName" class="control-label">First Name*</label>
+    <input type="text" id="firstName" class="form-control" name="firstName" [(ngModel)]="firstName" #firstNameInput="ngModel" required>
+    <span class="help-block" *ngIf="isInvalid(firstNameInput, personForm)">First Name is required.</span>
+  </div>
+
+  <div class="form-group" [class.has-error]="isInvalid(lastNameInput, personForm)">
+    <label for="lastName" class="control-label">Last Name*</label>
+    <input type="text" id="lastName" class="form-control" name="lastName" [(ngModel)]="lastName" #lastNameInput="ngModel" required>
+    <span class="help-block" *ngIf="isInvalid(lastNameInput, personForm)">Last Name is required.</span>
+  </div>
+
+  <div class="form-group">
+    <label for="age" class="control-label">Age</label>
+    <input type="number" class="form-control" id="age" name="age" [(ngModel)]="age">
+  </div>
+
+  <div class="form-group">
+    <label for="handedness" class="control-label">Handedness</label>
+    <select id="handedness" class="form-control" name="handedness" [(ngModel)]="handedness">
+      <option value="'left'">Left</option>
+      <option value="'right'">Right</option>
+      <option value="'ambidextrous'">Ambidextrous</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!personForm.valid">Submit</button>
+</form>

@@ -1,0 +1,10 @@
+<p>Name: {{cat.name}}</p>
+<p>Breed: {{cat.breed}}</p>
+<p>Description: {{cat.description}}</p>
+<p>Birth Date: {{cat.birthday | date}}</p>
+<p>Age in Cat Years: {{cat.birthday | catYears}}</p>
+<div>
+    <label for="name">Edit Name</label>
+    <input type="text" id="name" name="name" [(ngModel)]="cat.name"/>
+</div>
+<button type="button" (click)="setAsFavourite()">Set as Favourite</button>

@@ -1,0 +1,17 @@
+{
+  "name": "ng2-course-server",
+  "version": "1.0.0",
+  "description": "Mock server for DEV6 Angular 2 Course exercises",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "DEV6",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}

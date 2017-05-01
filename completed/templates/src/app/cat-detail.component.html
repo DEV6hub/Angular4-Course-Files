@@ -1,0 +1,8 @@
+<p>Name: {{cat.name}}</p>
+<p>Type: {{cat.type}}</p>
+<p>Description: {{cat.description}}</p>
+<div>
+    <label for="name">Edit Name</label>
+    <input type="text" id="name" name="name" [(ngModel)]="cat.name"/>
+</div>
+<button type="button" (click)="setAsFavourite()">Set as Favourite</button>

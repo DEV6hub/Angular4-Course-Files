@@ -1,0 +1,7 @@
+<h3>Favourite Dog: {{favouriteDog?.name}}</h3>
+
+<ul>
+  <li *ngFor="let dog of dogs" (click)="selectDog(dog)">{{dog.name}}</li>
+</ul>
+
+<a [routerLink]="'/'">Home</a>

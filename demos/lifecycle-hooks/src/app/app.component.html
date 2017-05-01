@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<people-list></people-list>
+
+<button (click)="toggleReporter()">Toggle Lifecycle Reporter</button>
+<button (click)="doSomething()">Empty Click</button>
+<button (click)="increment()">Increment Number</button>
+
+<hr>
+
+<lifecycle-reporter *ngIf="showReporter" [num]="num"></lifecycle-reporter>

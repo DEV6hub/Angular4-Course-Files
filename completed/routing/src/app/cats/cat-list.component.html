@@ -1,0 +1,5 @@
+<p *ngIf="favouriteCat">{{favouriteCat.name}} is my favourite!</p>
+
+<ul>
+    <li *ngFor="let cat of cats" (click)="selectCat(cat)">{{cat.name}}</li>
+</ul>

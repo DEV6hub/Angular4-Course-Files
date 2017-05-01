@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>{{title}}</h1>
+
+  <person-details [person]="person" *ngIf="person"></person-details>
+  <p *ngIf="!person">Please submit a person</p>
+
+  <person-form (submitted)="personCreated($event)"></person-form>
+</div>

@@ -1,0 +1,7 @@
+<p *ngIf="favouritePet">{{favouritePet.name}} is my favourite!</p>
+
+<ul>
+    <li *ngFor="let pet of pets | async" (click)="selectPet(pet)">{{pet.name}}</li>
+</ul>
+
+<button type="button" (click)="addPet()">Add New {{"SINGULAR" | translate}}</button>

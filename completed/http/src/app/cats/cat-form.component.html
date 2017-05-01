@@ -1,0 +1,22 @@
+<form #catForm="ngForm" (ngSubmit)="saveCat()" novalidate *ngIf="cat">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="cat.name" #name="ngModel" required>
+        <div *ngIf="!name.valid && name.touched">Please fill in a name.</div>
+    </div>
+    <div>
+        <label for="breed">Breed</label>
+        <input type="text" id="breed" name="breed" [(ngModel)]="cat.breed">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" [(ngModel)]="cat.description">
+    </div>
+    <div>
+        <label for="birthday">Birthday</label>
+        <input type="date" id="birthday" name="birthday" [ngModel]="birthdayForInput()" (ngModelChange)="setBirthday($event)">
+    </div>
+    <div>
+        <button type="submit" [disabled]="!catForm.valid">Save Cat</button>
+    </div>
+</form>

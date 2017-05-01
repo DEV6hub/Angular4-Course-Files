@@ -1,0 +1,9 @@
+p {
+  display: block;
+  margin: 10px;
+  padding: 0 10px;
+  background-color: #eee;
+  line-height: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+}

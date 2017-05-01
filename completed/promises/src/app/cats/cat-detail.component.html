@@ -1,0 +1,13 @@
+<div *ngIf="cat">
+    <p>Name: {{cat.name}}</p>
+    <p>Breed: {{cat.breed}}</p>
+    <p>Description: {{cat.description}}</p>
+    <p>Birth Date: {{cat.birthday | date}}</p>
+    <p>Age in Cat Years: {{cat.birthday | catYears}}</p>
+</div>
+<div>
+    <button type="button" (click)="setAsFavourite()">Set as Favourite</button>
+    <button type="button" (click)="goBack()">Go Back</button>
+    <button type="button" (click)="editCat()">Edit Cat</button>
+    <button type="button" (click)="deleteCat()">Delete Cat</button>
+</div>

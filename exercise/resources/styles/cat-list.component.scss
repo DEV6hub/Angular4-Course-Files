@@ -1,0 +1,15 @@
+/* Full Cat List */
+ul {
+  margin-right: 50px;
+  list-style-type: none;
+}
+
+/* Individual Cats */
+li {
+  margin-right: 10px;
+  padding: 10px;
+  border-bottom: thin dotted #ffc185;
+  color: #a6825f;
+  font-family: Verdana, Geneva, sans-serif;
+  cursor: pointer;
+}

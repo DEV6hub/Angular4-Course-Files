@@ -1,0 +1,11 @@
+<p>Name: {{dog.name}}</p>
+<p>Breed: {{dog.breed}}</p>
+<p>Description: {{dog.description}}</p>
+<p>Birth Date: {{dog.birthday | date}}</p>
+<p>Age in Dog Years: {{dog.birthday | dogYears}}</p>
+<div>
+    <label for="name">Edit Name</label>
+    <input type="text" id="name" name="name" [(ngModel)]="dog.name"/>
+</div>
+<button type="button" (click)="setAsFavourite()">Set as Favourite</button>
+<button type="button" (click)="goBack()">Go Back</button>

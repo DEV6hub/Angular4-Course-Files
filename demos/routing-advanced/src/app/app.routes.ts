@@ -5,6 +5,7 @@ import {DashboardComponent} from "./dashboard.component";
 
 const routes: Routes = [
 	{ path: 'dogs', loadChildren: './dogs/dog.module#DogModule', canLoad: [GuardDog] },
+	{ path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
 	{ path: '', component: DashboardComponent, pathMatch: 'full' }
 ];
 

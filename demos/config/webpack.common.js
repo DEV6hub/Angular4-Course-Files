@@ -5,6 +5,23 @@ var webpack = require("webpack"),
 	helpers = require("./helpers");
 
 const lessonPath = process.env.lesson;
+var plugins = [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: ["app", "vendor", "polyfills"]
+		}),
+		
+		new HtmlWebpackPlugin({
+			template: "index.html"
+		})
+];
+
+if (lessonPath === 'localization') {
+	plugins.push(
+		new CopyWebpackPlugin([{
+			from: "i18n", to: "i18n"
+		}])
+	)
+}
 
 module.exports = {
 	context: helpers.root() + "/" + lessonPath + "/src",
@@ -15,18 +32,19 @@ module.exports = {
 	},
 	
 	resolve: {
-		extensions: ["", ".ts", ".js"]
+		extensions: [".ts", ".js"]
 	},
 	
 	module: {
+		exprContextCritical: false,
 		loaders: [
 			{
 				test: /\.ts$/,
-				loaders: ["ts", "angular2-router-loader"]
+				loaders: ["ts-loader", "angular2-router-loader"]
 			},
 			{
 				test: /\.html$/,
-				loader: "html"
+				loader: "html-loader"
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
@@ -35,12 +53,12 @@ module.exports = {
 			{
 				test: /\.css$/,
 				exclude: helpers.root(lessonPath, "src", "app"),
-				loader: ExtractTextPlugin.extract("style", "css?sourceMap")
+				loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
 			},
 			{
 				test: /\.css$/,
 				include: helpers.root(lessonPath, "src", "app"),
-				loader: "raw"
+				loader: "raw-loader"
 			},
 			{
 				test: /\.s(a|c)ss$/,
@@ -49,17 +67,5 @@ module.exports = {
 		]
 	},
 	
-	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: ["app", "vendor", "polyfills"]
-		}),
-		
-		new CopyWebpackPlugin([{
-			from: "i18n", to: "i18n"
-		}]),
-		
-		new HtmlWebpackPlugin({
-			template: "index.html"
-		})
-	]
+	plugins: plugins
 }

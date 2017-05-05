@@ -8,7 +8,7 @@ module.exports = webpackMerge(commonConfig, {
 	devtool: "source-map",
 	
 	resolve: {
-		extensions: ["", ".webpack.js", ".web.js", ".ts", ".js"]
+		extensions: [".webpack.js", ".web.js", ".ts", ".js"]
 	},
 	
 	output: {

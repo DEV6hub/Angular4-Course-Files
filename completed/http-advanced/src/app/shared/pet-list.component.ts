@@ -1,9 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
-import {Pet} from "./pet";
-import {PetService} from "./pet.service";
+import {Pet} from "../pet";
+import {PetService} from "../pet.service";
 import {Observable} from "rxjs";
-import {TranslateService} from "ng2-translate";
 @Component({
 	selector: "pet-list",
 	template: require("./pet-list.component.html")
@@ -14,10 +13,8 @@ export class PetListComponent implements OnInit {
 	
 	private type: "cat" | "dog";
 	
-	constructor(private petService: PetService, private router: Router, private route: ActivatedRoute, private translateService: TranslateService) {
+	constructor(private petService: PetService, private router: Router, private route: ActivatedRoute) {
 		this.type = route.snapshot.data["type"];
-		
-		translateService.use(this.type);
 	}
 	
 	ngOnInit (): any {

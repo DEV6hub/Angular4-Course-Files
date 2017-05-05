@@ -56,6 +56,7 @@ export class CatFormComponent implements OnInit, OnDestroy {
 	saveCat(): any {
 		this.subs.push(this.petService.savePet(this.cat).subscribe(
 			(pet) => {
+				console.log(pet);
 				this.router.navigate(["cats", pet.id]);
 			}
 		));

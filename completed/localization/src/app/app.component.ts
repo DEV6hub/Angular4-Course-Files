@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {TranslateService} from "ng2-translate";
+
 @Component({
 	selector: "herding-cats",
 	template: `<h1>Herding {{"PLURAL" | translate}}</h1>

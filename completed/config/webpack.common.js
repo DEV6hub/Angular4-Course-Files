@@ -1,10 +1,21 @@
 var webpack = require("webpack"),
 	HtmlWebpackPlugin = require("html-webpack-plugin"),
 	ExtractTextPlugin = require("extract-text-webpack-plugin"),
+	CopyWebpackPlugin = require("copy-webpack-plugin"),
 	helpers = require("./helpers");
 
+var plugins = [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: ["app", "vendor", "polyfills"]
+		}),
+		
+		new HtmlWebpackPlugin({
+			template: "index.html"
+		})
+];
+
 module.exports = {
-	context: helpers.root() + "/src",
+	context: helpers.root() + "/" + lessonPath + "/src",
 	entry: {
 		app: "./main.ts",
 		vendor: helpers.root() + "/common/vendor.ts",
@@ -12,18 +23,19 @@ module.exports = {
 	},
 	
 	resolve: {
-		extensions: ["", ".js", ".ts"]
+		extensions: [".ts", ".js"]
 	},
 	
 	module: {
+		exprContextCritical: false,
 		loaders: [
 			{
 				test: /\.ts$/,
-				loader: "ts"
+				loaders: ["ts-loader", "angular2-router-loader"]
 			},
 			{
 				test: /\.html$/,
-				loader: "html"
+				loader: "html-loader"
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
@@ -31,13 +43,13 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				exclude: helpers.root("src", "app"),
-				loader: ExtractTextPlugin.extract("style", "css?sourceMap")
+				exclude: helpers.root(lessonPath, "src", "app"),
+				loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
 			},
 			{
 				test: /\.css$/,
-				include: helpers.root("src", "app"),
-				loader: "raw"
+				include: helpers.root(lessonPath, "src", "app"),
+				loader: "raw-loader"
 			},
 			{
 				test: /\.s(a|c)ss$/,
@@ -46,13 +58,5 @@ module.exports = {
 		]
 	},
 	
-	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: ["app", "vendor", "polyfills"]
-		}),
-		
-		new HtmlWebpackPlugin({
-			template: "index.html"
-		})
-	]
+	plugins: plugins
 }

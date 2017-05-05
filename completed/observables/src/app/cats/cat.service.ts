@@ -38,8 +38,8 @@ export class CatService {
 		});
 	}
 	
-	deleteCat(cat: Cat): Observable<Cat> {
-		return new Observable<Cat>((observer) => {
+	deleteCat(cat: Cat): Observable<Cat | boolean> {
+		return new Observable<Cat | boolean>((observer) => {
 			let idx: number = this.cats.findIndex(existingCat => existingCat.id === cat.id);
 			
 			if ( idx != -1 ) {

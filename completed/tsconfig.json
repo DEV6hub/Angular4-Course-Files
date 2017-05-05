@@ -5,7 +5,12 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es2016",
+      "scripthost"
+    ]
   },
   "exclude": [
     "node_modules"

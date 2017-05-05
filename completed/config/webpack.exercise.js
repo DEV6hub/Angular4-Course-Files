@@ -6,8 +6,29 @@ var webpack = require("webpack"),
 
 const exercisePath = process.env.exercise;
 
+var plugins = [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: ["app", "vendor", "polyfills"]
+		}),
+
+		new ExtractTextPlugin("[name].css"),
+		
+		new HtmlWebpackPlugin({
+			template: "index.html"
+		})
+		
+];
+
+if (exercisePath === 'localization') {
+	plugins.push(
+		new CopyWebpackPlugin([{
+			from: "i18n", to: "i18n"
+		}])
+	)
+}
+
 module.exports = {
-	context: helpers.root() + "/" + exercisePath + "/src",
+	context: helpers.root() + '/' + exercisePath + "/src",
 	entry: {
 		app: "./main.ts",
 		vendor: helpers.root() + "/common/vendor.ts",
@@ -15,18 +36,19 @@ module.exports = {
 	},
 	
 	resolve: {
-		extensions: ["", ".webpack.js", ".web.js", ".ts", ".js"]
+		extensions: [".webpack.js", ".web.js", ".ts", ".js"]
 	},
 	
 	module: {
+		exprContextCritical: false,
 		loaders: [
 			{
 				test: /\.ts$/,
-				loaders: ["ts", "angular2-router-loader?debug=true"]
+				loaders: ["ts-loader", "angular2-router-loader?debug=true"]
 			},
 			{
 				test: /\.html$/,
-				loader: "html"
+				loader: "html-loader"
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
@@ -35,35 +57,21 @@ module.exports = {
 			{
 				test: /\.css$/,
 				exclude: helpers.root("src", "app"),
-				loader: ExtractTextPlugin.extract("style", "css?sourceMap")
+				loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
 			},
 			{
 				test: /\.css$/,
 				include: helpers.root("src", "app"),
-				loader: "raw"
+				loader: "raw-loader"
 			},
 			{
 				test: /\.s(a|c)ss$/,
-				loaders: ["raw", "sass-loader"]
+				loaders: ["raw-loader", "sass-loader"]
 			}
 		]
 	},
 	
-	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: ["app", "vendor", "polyfills"]
-		}),
-		
-		new ExtractTextPlugin("[name].css"),
-		
-		new CopyWebpackPlugin([{
-			from: "i18n", to: "i18n"
-		}]),
-		
-		new HtmlWebpackPlugin({
-			template: "index.html"
-		})
-	],
+	plugins: plugins,
 	
 	devtool: "source-map",
 	

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, RequestOptionsArgs, BaseRequestOptions} from "@angular/http";
+import { Http, Response, RequestOptionsArgs, BaseRequestOptions, RequestMethod } from "@angular/http";
 import {Observable} from "rxjs";
 @Injectable()
 export class HttpWrapper {
@@ -11,17 +11,19 @@ export class HttpWrapper {
 		let jsonOptions: RequestOptionsArgs = this.getJSONOptions(options);
 		return this.http.get(url, jsonOptions)
 		.retryWhen(error => error.delay(500))
-		.timeout(2000, new Error("request timed out"))
+		.timeout(2000)
 	}
 	
 	post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
 		let jsonOptions: RequestOptionsArgs = this.getJSONOptions(options);
+		jsonOptions.method = RequestMethod.Post;
 		
 		return this.http.post(url, body, jsonOptions)
 	}
 	
 	put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
 		let jsonOptions: RequestOptionsArgs = this.getJSONOptions(options);
+		jsonOptions.method = RequestMethod.Put;
 		
 		return this.http.put(url, body, jsonOptions).catch((error) => {
 			console.log("error: " + error.status);
@@ -39,6 +41,10 @@ export class HttpWrapper {
 	}
 	
 	delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
+		if (!options) {
+			options = new BaseRequestOptions();
+			options.method = RequestMethod.Delete;
+		}
 		return this.http.delete(url, options);
 	}
 	

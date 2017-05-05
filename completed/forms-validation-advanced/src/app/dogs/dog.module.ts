@@ -6,8 +6,10 @@ import {DogsComponent} from "./dogs.component";
 import {DogRoutingModule} from "./dog-routing.module";
 import {CommonModule} from "@angular/common";
 import {DogFormComponent} from "./dog-form.component";
+import {SharedModule} from "../shared/shared.module";
+
 @NgModule({
-	imports: [CommonModule, ReactiveFormsModule, DogRoutingModule],
+	imports: [CommonModule, ReactiveFormsModule, DogRoutingModule, SharedModule],
 	declarations: [DogDetailComponent, DogYearsPipe, DogsComponent, DogFormComponent],
 })
 export default class DogModule {}

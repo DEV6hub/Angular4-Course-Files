@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {DogsComponent} from "./dogs.component";
-import {PetListComponent} from "../pet-list.component";
+import {PetListComponent} from "../shared/pet-list.component";
 import {DogDetailComponent} from "./dog-detail.component";
 import {DogFormComponent} from "./dog-form.component";
 @NgModule({

@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {CatsComponent} from "./cats.component";
-import {PetListComponent} from "../pet-list.component";
+import {PetListComponent} from "../shared/pet-list.component";
 import {CatDetailComponent} from "./cat-detail.component";
 import {CatFormComponent} from "./cat-form.component";
 @NgModule({

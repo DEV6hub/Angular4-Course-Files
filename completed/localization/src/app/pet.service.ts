@@ -33,13 +33,13 @@ export class PetService {
 	
 	savePet(pet: Pet): any {
 		if ( pet.id ) {
-			return this.httpWrapper.put(`${this.baseUrl}/${pet.type}s/${pet.id}`, JSON.stringify(pet))
+			return this.httpWrapper.put(`${this.baseUrl}/${pet.type}s/${pet.id}`, JSON.stringify(pet)).map(response => response.json())
 		} else {
-			return this.httpWrapper.post(`${this.baseUrl}/${pet.type}s`, JSON.stringify(pet))
+			return this.httpWrapper.post(`${this.baseUrl}/${pet.type}s`, JSON.stringify(pet)).map(response => response.json())
 		}
 	}
 	
 	deletePet(pet: Pet): any {
-		return this.httpWrapper.delete(`${this.baseUrl}/${pet.type}s/${pet.id}`);
+		return this.httpWrapper.delete(`${this.baseUrl}/${pet.type}s/${pet.id}`).map(response => response.json());
 	}
 }

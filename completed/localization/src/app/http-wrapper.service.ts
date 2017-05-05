@@ -11,7 +11,7 @@ export class HttpWrapper {
 		let jsonOptions: RequestOptionsArgs = this.getJSONOptions(options);
 		return this.http.get(url, jsonOptions)
 		.retryWhen(error => error.delay(500))
-		.timeout(2000, new Error("request timed out"))
+		.timeout(2000)
 	}
 	
 	post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {

@@ -5,6 +5,6 @@ import {CommonModule} from "@angular/common";
 @NgModule({
 	imports: [CommonModule],
 	declarations: [PetListComponent​​],
-	exports: [PetListComponent]
+	exports: [PetListComponent​​]
 })
 export class SharedModule {}

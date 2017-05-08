@@ -1,9 +1,9 @@
 <div *ngIf="dog">
-    <p>Name: {{dog.name}}</p>
-    <p>Breed: {{dog.breed}}</p>
-    <p>Description: {{dog.description}}</p>
-    <p>Birth Date: {{dog.birthday | date}}</p>
-    <p>Age in Dog Years: {{dog.birthday | dogYears}}</p>
+	<p>Name: {{dog.name}}</p>
+	<p>Breed: {{dog.breed}}</p>
+	<p>Description: {{dog.description}}</p>
+	<p>Birth Date: {{dog.birthday | date}}</p>
+	<p>Age in Dog Years: {{dog.birthday | dogYears}}</p>
 </div>
 
 <button type="button" (click)="setAsFavourite()">Set as Favourite</button>

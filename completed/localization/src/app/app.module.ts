@@ -3,16 +3,12 @@ import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
 import {CatModule} from "./cats/cat.module";
 import {AppRoutingModule} from "./app-routing.module";
-import {PetService} from "./pet.service";
-import {GuardDogService} from "./guard-dog.service";
-import {HttpModule} from "@angular/http";
-import {HttpWrapper} from "./http-wrapper.service";
+import {CoreModule} from "./core/core.module";
 import {TranslateModule} from "ng2-translate";
 
 @NgModule({
-	imports: [BrowserModule, CatModule, HttpModule, AppRoutingModule, TranslateModule.forRoot()],
+	imports: [BrowserModule, CatModule, AppRoutingModule, CoreModule,  TranslateModule.forRoot()],
 	declarations: [AppComponent],
-	providers: [PetService, GuardDogService, HttpWrapper],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

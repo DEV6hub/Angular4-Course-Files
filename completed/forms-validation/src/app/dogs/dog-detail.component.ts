@@ -27,13 +27,4 @@ export class DogDetailComponent implements OnInit {
 		this.router.navigate(["dogs"]);
 	}
 
-
-	editDog(): any {
-		this.router.navigate(["dogs", this.dog.id, "edit"]);
-	}
-
-	deleteDog(): any {
-		this.petService.deletePet(this.dog);
-		this.goBack();
-	}
 }

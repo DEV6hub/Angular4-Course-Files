@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import * as moment from "moment";
-import {PetService} from "../pet.service";
-import {Pet} from "../pet";
+import {PetService} from "../core/pet.service";
+import {Pet} from "../shared/pet";
 
 @Component({
 	selector: "cat-form",

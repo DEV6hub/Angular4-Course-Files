@@ -1,4 +1,4 @@
-<form #catForm="ngForm" (ngSubmit)="saveCat()" novalidate *ngIf="cat">
+<form #catForm="ngForm" *ngIf="cat"  (ngSubmit)="saveCat()" novalidate>
     <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" [(ngModel)]="cat.name" #name="ngModel" required>

@@ -5,6 +5,7 @@ import {Pet} from "../shared/pet";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {pastDateValidator} from "../shared/past-date.validator";
 import * as moment from "moment";
+import { Subscription } from "rxjs";
 
 @Component({
 	selector: "dog-form",
@@ -12,6 +13,7 @@ import * as moment from "moment";
 })
 export class DogFormComponent implements OnInit {
 	dog: Pet;
+	subs: Subscription[] = [];
 	
 	private dateFormat: string = "YYYY-MM-DD";
 	
@@ -25,17 +27,27 @@ export class DogFormComponent implements OnInit {
 			birthday: ["", pastDateValidator(new Date())]
 		})
 	}
-	
+
 	ngOnInit(): any {
 		let id: number = parseInt(this.route.snapshot.params["id"]);
-		this.dog = this.petService.getPet(id);
-		
-		if ( !this.dog ) {
-			this.dog = new Pet("dog");
+		this.subs.push(this.petService.getPet(id).subscribe(
+			(dog) => {
+				this.dog = dog;
+				this.updateDogForm();
+			},
+			(error) => {
+				this.dog = new Pet('dog');
+				this.updateDogForm();
+			}));
+
+	}
+
+	ngOnDestroy(): any {
+		if ( this.subs ) {
+			this.subs.forEach(sub => sub.unsubscribe());
 		}
-		
-		this.dogForm.patchValue(this.dog);
-		this.dogForm.get("birthday").setValue(this.birthdayForInput(), true);
+
+		this.subs = [];
 	}
 	
 	birthdayForInput(): string {
@@ -45,10 +57,17 @@ export class DogFormComponent implements OnInit {
 	setBirthday(dateString: string): Date {
 		return moment(dateString, this.dateFormat).toDate();
 	}
-	
+
+
 	saveDog(): any {
 		this.dog = Object.assign(this.dog, this.dogForm.value, { birthday: this.setBirthday(this.dogForm.get("birthday").value)});
-		this.petService.savePet(this.dog);
-		this.router.navigate(["dogs", this.dog.id]);
+		this.subs.push(this.petService.savePet(this.dog).subscribe((result) => {
+			this.router.navigate(["dogs", this.dog.id]);
+		}));
+	}
+
+	private updateDogForm(): void {
+		this.dogForm.patchValue(this.dog);
+		this.dogForm.get("birthday").setValue(this.birthdayForInput(), true);
 	}
 }

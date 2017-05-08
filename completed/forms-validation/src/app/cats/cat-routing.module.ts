@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {CatsComponent} from "./cats.component";
-import {CatListComponent} from "./cat-list.component";
+import {PetListComponent} from "../shared/pet-list.component";
 import {CatDetailComponent} from "./cat-detail.component";
 import {CatFormComponent} from "./cat-form.component";
 @NgModule({
@@ -10,7 +10,7 @@ import {CatFormComponent} from "./cat-form.component";
 			{ path: "cats",
 			  component: CatsComponent,
 			  children: [
-				  { path: "", component: CatListComponent, pathMatch: "full" },
+				  { path: "", component: PetListComponent, pathMatch: "full", data: { type: "cat" }},
 				  { path: ":id/edit", component: CatFormComponent },
 				  { path: "new", component: CatFormComponent },
 				  { path: ":id", component: CatDetailComponent }

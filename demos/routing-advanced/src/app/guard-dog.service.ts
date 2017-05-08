@@ -1,14 +1,14 @@
 import {Injectable} from "@angular/core";
-import {CanLoad, Route} from "@angular/router";
+import {CanActivate, Route} from "@angular/router";
 import {DogService} from "./dogs/dog.service";
 
 @Injectable()
-export class GuardDog implements CanLoad {
+export class GuardDog implements CanActivate {
 	constructor(private dogService: DogService) {
 		
 	}
 	
-	canLoad(route: Route): boolean {
-		return this.dogService.favouriteDog.type != "Chihuahua";
+	canActivate(): boolean {
+		return this.dogService.favouriteDog.type !== "Chihuahua";
 	}
 }

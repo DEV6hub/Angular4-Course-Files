@@ -1,14 +1,15 @@
 import {Component, OnInit} from "@angular/core";
-import {CatService} from "./cat.service";
+import {PetService} from "../core/pet.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Cat} from "./cat";
+import {Pet} from "../shared/pet";
+
 @Component({
 	selector: "cat-detail",
 	template: require("./cat-detail.component.html")
 })
 export class CatDetailComponent implements OnInit {
-	cat: Cat;
-	constructor(private catService: CatService, private route:ActivatedRoute, private router:Router) {
+	cat: Pet;
+	constructor(private petService: PetService, private route:ActivatedRoute, private router:Router) {
 		
 	}
 	
@@ -17,11 +18,11 @@ export class CatDetailComponent implements OnInit {
 		if ( isNaN(id)) {
 			this.goBack();
 		}
-		this.cat = this.catService.getCat(id);
+		this.cat = this.petService.getPet(id);
 	}
 	
 	setAsFavourite(): any {
-		this.catService.favouriteCat = this.cat;
+		this.petService.favouritePet = this.cat;
 	}
 	
 	goBack(): any {

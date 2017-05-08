@@ -1,7 +1,8 @@
 import {Component, OnInit} from "@angular/core";
-import {PetService} from "../pet.service";
+import {PetService} from "../core/pet.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Pet} from "../pet";
+import {Pet} from "../shared/pet";
+
 @Component({
 	selector: "dog-detail",
 	template: require("./dog-detail.component.html")

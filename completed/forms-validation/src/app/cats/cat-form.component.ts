@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Cat} from "./cat";
-import {CatService} from "./cat.service";
+import {Pet} from "../shared/pet";
+import {PetService} from "../core/pet.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import * as moment from "moment";
 
@@ -10,11 +10,11 @@ import * as moment from "moment";
 })
 
 export class CatFormComponent implements OnInit {
-	cat: Cat;
+	cat: Pet;
 	
 	private dateFormat: string = "YYYY-MM-DD";
 	
-	constructor (private catService: CatService, private route: ActivatedRoute, private router: Router) {
+	constructor (private petService: PetService, private route: ActivatedRoute, private router: Router) {
 		
 	}
 	
@@ -22,14 +22,14 @@ export class CatFormComponent implements OnInit {
 		let id: number = parseInt(this.route.snapshot.params["id"]);
 		
 		if ( isNaN(id)) {
-			this.cat = new Cat();
+			this.cat = new Pet("cat");
 			return;
 		}
 		
-		this.cat = this.catService.getCat(id);
+		this.cat = this.petService.getPet(id);
 		
 		if ( !this.cat ) {
-			this.cat = new Cat();
+			this.cat = new Pet("cat");
 		}
 	}
 	
@@ -42,7 +42,7 @@ export class CatFormComponent implements OnInit {
 	}
 	
 	saveCat(): any {
-		this.catService.saveCat(this.cat);
+		this.petService.savePet(this.cat);
 		this.router.navigate(["cats", this.cat.id]);
 	}
 }

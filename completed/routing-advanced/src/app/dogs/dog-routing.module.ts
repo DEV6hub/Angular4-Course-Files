@@ -3,6 +3,7 @@ import {RouterModule} from "@angular/router";
 import {DogsComponent} from "./dogs.component";
 import {PetListComponent} from "../shared/pet-list.component";
 import {DogDetailComponent} from "./dog-detail.component";
+
 @NgModule({
 	imports: [
 		RouterModule.forChild([

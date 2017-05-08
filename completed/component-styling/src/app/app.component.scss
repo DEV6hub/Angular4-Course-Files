@@ -21,23 +21,22 @@ h1 {
   box-sizing: border-box;
 }
 
-h2,
-h3,
-h4 {
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav > a {
+  padding: 8px;
   color: #c3b09e;
   font-family: Verdana, Geneva, sans-serif;
   text-transform: uppercase;
 }
 
-/* For Titles of each component i.e. "List of all Cats Available for Adoption"*/
-h4 {
-  margin-bottom: 0;
-  border-bottom: thin dotted #87613d;
-}
-
 body {
   margin: 2em;
-  background-color: #ffc185;;
+  background-color: #ffc185;
 }
 
 body,

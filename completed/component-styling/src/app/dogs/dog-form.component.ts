@@ -32,6 +32,10 @@ export class DogFormComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): any {
 		let id: number = parseInt(this.route.snapshot.params["id"]);
+		if ( isNaN(id)) {
+			this.dog = new Pet("dog");
+			return;
+		}
 		this.subs.push(this.petService.getPet(id, 'dog').subscribe(
 			(dog) => {
 				this.dog = dog;

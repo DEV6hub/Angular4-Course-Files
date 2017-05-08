@@ -28,6 +28,11 @@ export class DogFormComponent implements OnInit {
 	
 	ngOnInit(): any {
 		let id: number = parseInt(this.route.snapshot.params["id"]);
+		if ( isNaN(id)) {
+			this.dog = new Pet("dog");
+			return;
+		}
+
 		this.dog = this.petService.getPet(id);
 		
 		if ( !this.dog ) {

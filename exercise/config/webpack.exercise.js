@@ -28,7 +28,7 @@ if (exercisePath === 'localization') {
 }
 
 module.exports = {
-	context: helpers.root() + "/completed/" + exercisePath + "/src",
+	context: helpers.root() + '/' + exercisePath + "/src",
 	entry: {
 		app: "./main.ts",
 		vendor: helpers.root() + "/common/vendor.ts",

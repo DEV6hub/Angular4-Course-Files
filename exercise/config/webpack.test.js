@@ -1,4 +1,5 @@
-const webpack = require("webpack"),
+var webpack = require("webpack"),
+	ExtractTextPlugin = require("extract-text-webpack-plugin"),
 	helpers = require("./helpers");
 
 module.exports = {
@@ -23,8 +24,17 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
+				exclude: helpers.root("src", "app"),
+				loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+			},
+			{
+				test: /\.css$/,
 				include: helpers.root("src", "app"),
 				loader: "raw-loader"
+			},
+			{
+				test: /\.s(a|c)ss$/,
+				loaders: ["raw-loader", "sass-loader"]
 			}
 		]
 	}

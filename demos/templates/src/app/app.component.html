@@ -5,8 +5,11 @@
 </ul>
 
 <h3>Hide and Seek</h3>
-<p [style.visibility]="isFound ? 'hidden' : 'visible'">Hiding...</p>
-<p *ngIf="isFound">Found you!</p>
+<p *ngIf="isFound; else hiding">Found you!</p>
+<ng-template #hiding>
+  <p>Hiding...</p>
+</ng-template>
+
 <button (click)="toggleFound()">Commence the search</button>
 
 <hr>

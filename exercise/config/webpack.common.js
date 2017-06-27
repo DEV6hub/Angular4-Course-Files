@@ -15,7 +15,7 @@ var plugins = [
 ];
 
 module.exports = {
-	context: helpers.root() + "/" + lessonPath + "/src",
+	context: helpers.root() + "/src",
 	entry: {
 		app: "./main.ts",
 		vendor: helpers.root() + "/common/vendor.ts",
@@ -43,12 +43,12 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				exclude: helpers.root(lessonPath, "src", "app"),
+				exclude: helpers.root("src", "app"),
 				loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
 			},
 			{
 				test: /\.css$/,
-				include: helpers.root(lessonPath, "src", "app"),
+				include: helpers.root("src", "app"),
 				loader: "raw-loader"
 			},
 			{

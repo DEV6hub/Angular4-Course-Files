@@ -1,0 +1,8 @@
+{
+  "globalDependencies": {
+    "core-js": "registry:dt/core-js#0.9.0+20170324193834",
+    "jasmine": "registry:dt/jasmine#2.5.2+20170317130948",
+    "jasmine-expect": "registry:dt/jasmine-expect#3.6.0+20170314065835",
+    "moment": "registry:dt/moment#2.11.1+20161010105546"
+  }
+}

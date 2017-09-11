@@ -4,4 +4,4 @@
     <li *ngFor="let cat of cats" (click)="selectCat(cat)">{{cat.name}}</li>
 </ul>
 
-<cat-detail *ngIf="selectedPet" [cat]="selectedPet" (isFavourite)="selectFavourite($event)"></cat-detail>
+<cat-detail *ngIf="selectedCat" [cat]="selectedCat" (isFavourite)="selectFavourite($event)"></cat-detail>
